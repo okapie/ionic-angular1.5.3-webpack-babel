@@ -4,7 +4,7 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  const chats = [{
     id: 0,
     name: 'Ben Sparrow',
     lastText: 'You on your way?',
@@ -44,12 +44,6 @@ angular.module('starter.services', [])
           return i;
         }
       }
-      /*
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }*/
       return null;
     }
   };

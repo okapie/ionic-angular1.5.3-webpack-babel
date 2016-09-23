@@ -214,12 +214,6 @@
 	            return i;
 	          }
 	        }
-	        /*
-	        for (var i = 0; i < chats.length; i++) {
-	          if (chats[i].id === parseInt(chatId)) {
-	            return chats[i];
-	          }
-	        }*/
 	      } catch (err) {
 	        _didIteratorError = true;
 	        _iteratorError = err;
