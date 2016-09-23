@@ -6,7 +6,7 @@ First of all, you need ```npm install``` for using bower and gulp.
 
 you need also ```bower install``` for using ionic and ngCordova in the project root.
 
-Then, move to the www directory with cd command. You need there npm install for using webpack and babel.
+Then, move to the www directory with cd command. You need there ```npm install``` for using webpack and babel.
 
 ## How to build
 
