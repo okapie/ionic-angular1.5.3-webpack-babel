@@ -42,6 +42,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(1);
+	__webpack_require__(2);
+	module.exports = __webpack_require__(3);
+
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -119,6 +128,116 @@
 
 	  // if none of the above states are matched, use this as the fallback
 	  $urlRouterProvider.otherwise('/tab/dash');
+	});
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('starter.controllers', []).controller('DashCtrl', function ($scope) {}).controller('ChatsCtrl', function ($scope, Chats) {
+	  // With the new view caching in Ionic, Controllers are only called
+	  // when they are recreated or on app start, instead of every page change.
+	  // To listen for when this page is active (for example, to refresh data),
+	  // listen for the $ionicView.enter event:
+	  //
+	  //$scope.$on('$ionicView.enter', function(e) {
+	  //});
+
+	  $scope.chats = Chats.all();
+	  $scope.remove = function (chat) {
+	    Chats.remove(chat);
+	  };
+	}).controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
+	  $scope.chat = Chats.get($stateParams.chatId);
+	}).controller('AccountCtrl', function ($scope) {
+	  $scope.settings = {
+	    enableFriends: true
+	  };
+	});
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('starter.services', []).factory('Chats', function () {
+	  // Might use a resource here that returns a JSON array
+
+	  // Some fake testing data
+	  var chats = [{
+	    id: 0,
+	    name: 'Ben Sparrow',
+	    lastText: 'You on your way?',
+	    face: 'img/ben.png'
+	  }, {
+	    id: 1,
+	    name: 'Max Lynx',
+	    lastText: 'Hey, it\'s me',
+	    face: 'img/max.png'
+	  }, {
+	    id: 2,
+	    name: 'Adam Bradleyson',
+	    lastText: 'I should buy a boat',
+	    face: 'img/adam.jpg'
+	  }, {
+	    id: 3,
+	    name: 'Perry Governor',
+	    lastText: 'Look at my mukluks!',
+	    face: 'img/perry.png'
+	  }, {
+	    id: 4,
+	    name: 'Mike Harrington',
+	    lastText: 'This is wicked good ice cream.',
+	    face: 'img/mike.png'
+	  }];
+
+	  return {
+	    all: function all() {
+	      return chats;
+	    },
+	    remove: function remove(chat) {
+	      chats.splice(chats.indexOf(chat), 1);
+	    },
+	    get: function get(chatId) {
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = chats[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var i = _step.value;
+
+	          if (i.id === parseInt(chatId)) {
+	            return i;
+	          }
+	        }
+	        /*
+	        for (var i = 0; i < chats.length; i++) {
+	          if (chats[i].id === parseInt(chatId)) {
+	            return chats[i];
+	          }
+	        }*/
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator.return) {
+	            _iterator.return();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+
+	      return null;
+	    }
+	  };
 	});
 
 /***/ }
