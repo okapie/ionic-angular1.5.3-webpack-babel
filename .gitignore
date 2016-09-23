@@ -2,5 +2,12 @@
 # http://git-scm.com/docs/gitignore
 
 node_modules/
+www/node_modules/
+
 platforms/
 plugins/
+
+### .DS_Store ###
+.DS_Store
+www/.DS_Store
+www/public/js/
